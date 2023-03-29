@@ -1,0 +1,18 @@
+<h4>Internal Server Error - refreshing the page will make the error disappere</h4>
+
+<ng-container *ngIf="error">
+  <h5 class="text-denger">Error:{{error.messages}}</h5>
+  <p class="font-weight--bold">Note: If you are seeing this then angular is probably not to blame</p>
+
+<p>Whats to do next?</p>
+<ol>
+  <li>Open Crome dev tools! then check the falling request in the network tab</li>
+  <li>Examine the request URL - what API endpoint are you requesting?</li>
+  <li>Reduce the problem in postmen</li>
+</ol>
+
+<p style="font-weight: bold;">following in the strack trace </p>
+<code class="mt-5" style="background-color: whitesmoke;">
+{{error.details}}
+</code>
+</ng-container>
