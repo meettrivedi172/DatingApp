@@ -23,6 +23,7 @@
     "bootswatch": "^5.2.3",
     "fontawesome": "^5.6.3",
     "ngx-bootstrap": "^10.2.0",
+    "ngx-spinner": "^15.0.1",
     "ngx-toastr": "^16.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
