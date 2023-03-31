@@ -1,3 +1,4 @@
+import { Photo } from './../_models/photo';
 import { map, of } from 'rxjs';
 import { Member } from './../_models/member';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -35,6 +36,18 @@ updateMember(member:Member){
 const index = this.member.indexOf(member);
   this.member[index] ={...this.member[index],...member}
   }));
+}
+
+
+setMainPhoto(PhotoId:number){
+
+  return this.http.put(this.baseUrl+"users/set-main-photo/"+PhotoId,{} )
+
+}
+
+
+deletePhoto(photoId: number){
+  return this.http.delete(this.baseUrl + "users/delete-photo/"+photoId)
 }
 
   // getHttpOption(){

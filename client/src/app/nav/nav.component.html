@@ -24,7 +24,8 @@
         </ng-container>
   <!-- <div class="dropdown"  *ngIf="loggedIn" dropdown> -->
     <div class="dropdown"  *ngIf="(currentUser$ | async) as User" dropdown>
-<a class="dropdown-toggle  text-light  text-decoration-none" dropdownToggle>Welcome {{User.username}}</a>
+      <img src="{{User.photoUrl || './assets/user.png'}}" alt="user Photo" srcset="">
+<a class="dropdown-toggle  text-light  text-decoration-none ms-2" dropdownToggle>Welcome {{User.username}}</a>
 
 <div class="dropdown-menu"   *dropdownMenu>
   <a class="dropdown-item" routerLink="/member/edit">Edit Profile</a>
