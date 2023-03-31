@@ -1,0 +1,12 @@
+<div class="mb-3">
+
+  <input class="form-control"
+  [formControl]="control "
+  [class.is-invalid]="control.invalid && control.touched"
+  type={{type}}
+  placeholder={{label}}
+   >
+  <div class="invalid-feedback" *ngIf="control.errors?.['required']">Please enter  {{label}}.</div>
+  <div class="invalid-feedback" *ngIf="control.errors?.['minlength']">{{label}} atlest 4 charecters</div>
+  <div class="invalid-feedback" *ngIf="control.errors?.['maxlength']">{{label}} must be most 8 charecters </div>
+</div>
