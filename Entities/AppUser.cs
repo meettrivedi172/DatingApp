@@ -39,11 +39,11 @@ namespace API.Entities
 
 
 
-    //   public int GetAge(){
+        public List<UserLikes> LikedByUsers { get; set; }
 
-    //     return DateOfBirth.CalcuateAge();
-    //   }
+        public List<UserLikes> LikedUsers { get; set; }
 
+   
 
     }
 }

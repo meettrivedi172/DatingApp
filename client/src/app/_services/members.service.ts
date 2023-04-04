@@ -18,7 +18,7 @@ export class MembersService {
   memberCache= new Map();
   user:User|undefined;
   userParams:UserParams|undefined;
-
+  getPaginationHeaders:any;
   constructor(private http:HttpClient,private accountservice:AccountService) {
     this.accountservice.currentUser$.pipe(take(1)).subscribe({
       next : user=>{
@@ -123,6 +123,19 @@ deletePhoto(photoId: number){
   return this.http.delete(this.baseUrl + "users/delete-photo/"+photoId)
 }
 
+
+
+addLike(username:string){
+  return this.http.post(this.baseUrl+'likes/'+ username ,{});
+
+}
+
+getLikes(pradicate:string,pageNumber:number,pageSize:number){
+  let params = this.paginationHeaders(pageNumber,pageSize)
+  params = params.append('predicate',pradicate)
+
+  return  this.getPaginatedResult<Member[]>(this.baseUrl+ 'likes' , params)
+}
   // getHttpOption(){
 
   //  const userString = localStorage.getItem('user');
