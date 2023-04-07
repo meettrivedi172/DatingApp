@@ -11,13 +11,13 @@ import { Messages } from 'src/app/_models/message';
 export class MemberMessagesComponent   implements OnInit {
 @ViewChild('messageForm') messageForm?:NgForm;
 @Input()  username:string|any;
-@Input()  message :Messages[] =[];
+
 
 messageContent = '';
 
 
 
-  constructor(private messageService:MessageService){}
+  constructor(public messageService:MessageService){}
 
 
 
@@ -29,14 +29,10 @@ messageContent = '';
 
   sendMessage(){
     if(!this.username)return;
-    this.messageService.sendMessage(this.username,this.messageContent).subscribe({
-      next : message =>{
-
-        this.message.push(message)
-
-        this.messageForm?.reset();
-      }
+    this.messageService.sendMessage(this.username,this.messageContent).then(()=>{
+      this.messageForm?.reset();
     })
+
   }
 
 }
