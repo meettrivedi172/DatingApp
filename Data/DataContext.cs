@@ -16,7 +16,7 @@ namespace API.Data
         }
 
 
-         public DbSet<UserLikes> UserLikes { get; set; }
+         public DbSet<UserLikes> Likes { get; set; }
 
           public DbSet<Message> Messages { get; set; }
 

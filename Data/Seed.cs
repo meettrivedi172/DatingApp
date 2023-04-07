@@ -40,9 +40,9 @@ namespace API.Data
       
             
             user.UserName =  user.UserName.ToLower();
-         
+         user.SecurityStamp  = Guid.NewGuid().ToString();
 
-           await  userManager.CreateAsync(user,"pa$$w0rd");
+           await  userManager.CreateAsync(user,"Pa$$w0rd");
 
            await  userManager.AddToRoleAsync(user,"Member");
 

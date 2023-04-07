@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace API.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class MessageEntityAdded : Migration
+    public partial class MessagesEntityAdded : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,12 +18,14 @@ namespace API.Data.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     SenderId = table.Column<int>(type: "INTEGER", nullable: false),
-                    SenderUserName = table.Column<string>(type: "TEXT", nullable: true),
+                    SenderKnownAs = table.Column<string>(type: "TEXT", nullable: true),
+                    SenderUserId = table.Column<int>(type: "INTEGER", nullable: true),
                     RecipientId = table.Column<int>(type: "INTEGER", nullable: false),
-                    RecipientUserName = table.Column<string>(type: "TEXT", nullable: true),
+                    RecipientKnownAs = table.Column<string>(type: "TEXT", nullable: true),
+                    RecipientUserId = table.Column<int>(type: "INTEGER", nullable: true),
                     Content = table.Column<string>(type: "TEXT", nullable: true),
                     DateRead = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    MassageSent = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    DateSent = table.Column<DateTime>(type: "TEXT", nullable: false),
                     SenderDeleted = table.Column<bool>(type: "INTEGER", nullable: false),
                     RecipientDeleted = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
@@ -31,28 +33,28 @@ namespace API.Data.Migrations
                 {
                     table.PrimaryKey("PK_Messages", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Messages_Users_RecipientId",
-                        column: x => x.RecipientId,
+                        name: "FK_Messages_Users_RecipientUserId",
+                        column: x => x.RecipientUserId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Messages_Users_SenderId",
-                        column: x => x.SenderId,
+                        name: "FK_Messages_Users_SenderUserId",
+                        column: x => x.SenderUserId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Messages_RecipientId",
+                name: "IX_Messages_RecipientUserId",
                 table: "Messages",
-                column: "RecipientId");
+                column: "RecipientUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Messages_SenderId",
+                name: "IX_Messages_SenderUserId",
                 table: "Messages",
-                column: "SenderId");
+                column: "SenderUserId");
         }
 
         /// <inheritdoc />

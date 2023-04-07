@@ -41,30 +41,32 @@ openRolesModel(user:User){
   initialState: {
           username :user.username,
           availableRoles:this.availableRoles,
-          selectedRoles:[...user.roles]
+          selectedRoles:[...user.roles],
+          user : user
     }
   };
 
 
 
   this.bsModelref =this.modalservice.show(RolesModalComponent,config);
-  //    this.bsModelref.onHide().subscribe({
-  //   next:()=>{
-
-  //     const  selecetedRoles:any= this.bsModelref.content?.selectedRoles;
-
-  //     if(!this.arrayEqual(selecetedRoles!,user.roles)){
-  //       this.adminservice.updateUserRoles(user.username,selecetedRoles ).subscribe({
-  //         next:roles=>user.roles = roles
-
-  //       })
-  //     }
-  //   }
-  // })
-
 
 
 }
+
+
+
+
+updateAdmin(user:User){
+
+      const  selecetedRoles:any= this.bsModelref.content?.selectedRoles;
+
+      if(!this.arrayEqual(selecetedRoles!,user.roles)){
+        this.adminservice.updateUserRoles(user.username,selecetedRoles ).subscribe({
+          next:roles=>user.roles = roles
+
+        })
+      }}
+
 
 
 
