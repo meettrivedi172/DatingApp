@@ -2,6 +2,7 @@ import { AccountService } from './_services/account.service';
 import { HttpClient } from '@angular/common/http';
 import { Component,OnInit } from '@angular/core';
 import { User } from './_models/user';
+import { AdminService } from './_services/admin.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ import { User } from './_models/user';
 export class AppComponent implements OnInit{
   title = 'DatingApp';
 
-  constructor(private http:HttpClient,private accountservice:AccountService){
+  constructor(private http:HttpClient,private accountservice:AccountService,private adminservice:AdminService){
 
   }
 
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit{
 
    this.setCurrentUser();
 
+   
 
   }
 
