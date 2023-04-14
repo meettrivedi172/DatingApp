@@ -51,9 +51,15 @@ app.UseCors(builder=>builder.AllowAnyHeader().AllowCredentials().AllowAnyMethod(
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 app.MapControllers();
 app.MapHub<PresenceHub>("hub/presence");
 app.MapHub<MessageHub>("hub/message");
+app.MapFallbackToController("Index" , "Fallback","text/HTML");
+
 
 using var  scope =  app.Services.CreateScope();
 var services =scope.ServiceProvider;
